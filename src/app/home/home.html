@@ -1,0 +1,46 @@
+<div class="header">
+  <div>
+    <a (click)="goToPrpfile()">my profile</a>
+  </div>
+
+  <h1>Our Products</h1>
+
+  <div>
+    filter by category:
+    <button class="btn category" (click)="filterByCategory(productCategory.Electronics)">
+      Electronics
+    </button>
+    <button class="btn category" (click)="filterByCategory(productCategory.WomensClothing)">
+      Women's Clothing
+    </button>
+    <button class="btn category" (click)="filterByCategory(productCategory.MensClothing)">
+      Men's Clothing
+    </button>
+    <button class="btn category" (click)="filterByCategory(productCategory.AllClothing)">
+      Clothing
+    </button>
+  </div>
+
+  <div>
+    <button class="btn refresh" (click)="refreshProducts()">Refresh Products</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card" *ngFor="let product of products$ | async">
+    <h2 class="title">{{ product.title }}</h2>
+    <p class="category">{{ product.category }}</p>
+    <img [src]="product.image" alt="{{ product.title }}" style="width: 250px; text-align: center" />
+    <p class="description">{{ product.description }}</p>
+
+    <div class="rating">⭐ {{ product.rating.rate }} ({{ product.rating.count }} reviews)</div>
+
+    <div class="price">${{ product.price }}</div>
+
+    <div class="actions">
+      <button class="btn add" (click)="addToCart(product)">Add to Cart</button>
+
+      <button class="btn buy" (click)="buyNow(product)">Buy Now</button>
+    </div>
+  </div>
+</div>

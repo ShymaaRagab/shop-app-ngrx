@@ -1,0 +1,208 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <h1 class="profile-title">User Profile</h1>
+
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit()" class="user-form">
+      <!-- Basic Info Section -->
+      <div class="form-section">
+        <h2 class="section-title">Basic Information</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="id">ID</label>
+            <input
+              id="id"
+              type="number"
+              formControlName="id"
+              class="form-input"
+              readonly />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              class="form-input"
+              [class.error]="userForm.get('email')?.invalid && userForm.get('email')?.touched" />
+            <span class="error-message" *ngIf="userForm.get('email')?.invalid && userForm.get('email')?.touched">
+              Please enter a valid email
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              id="username"
+              type="text"
+              formControlName="username"
+              class="form-input"
+              [class.error]="userForm.get('username')?.invalid && userForm.get('username')?.touched" />
+            <span class="error-message" *ngIf="userForm.get('username')?.invalid && userForm.get('username')?.touched">
+              Username is required
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input
+              id="phone"
+              type="text"
+              formControlName="phone"
+              class="form-input"
+              [class.error]="userForm.get('phone')?.invalid && userForm.get('phone')?.touched" />
+            <span class="error-message" *ngIf="userForm.get('phone')?.invalid && userForm.get('phone')?.touched">
+              Phone is required
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Name Section -->
+      <div class="form-section" formGroupName="name">
+        <h2 class="section-title">Name</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstname">First Name</label>
+            <input
+              id="firstname"
+              type="text"
+              formControlName="firstname"
+              class="form-input"
+              [class.error]="userForm.get('name.firstname')?.invalid && userForm.get('name.firstname')?.touched" />
+            <span class="error-message" *ngIf="userForm.get('name.firstname')?.invalid && userForm.get('name.firstname')?.touched">
+              First name is required
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="lastname">Last Name</label>
+            <input
+              id="lastname"
+              type="text"
+              formControlName="lastname"
+              class="form-input"
+              [class.error]="userForm.get('name.lastname')?.invalid && userForm.get('name.lastname')?.touched" />
+            <span class="error-message" *ngIf="userForm.get('name.lastname')?.invalid && userForm.get('name.lastname')?.touched">
+              Last name is required
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Address Section -->
+      <div class="form-section" formGroupName="address">
+        <h2 class="section-title">Address</h2>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="city">City</label>
+            <input
+              id="city"
+              type="text"
+              formControlName="city"
+              class="form-input"
+              [class.error]="userForm.get('address.city')?.invalid && userForm.get('address.city')?.touched" />
+            <span class="error-message" *ngIf="userForm.get('address.city')?.invalid && userForm.get('address.city')?.touched">
+              City is required
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="street">Street</label>
+            <input
+              id="street"
+              type="text"
+              formControlName="street"
+              class="form-input"
+              [class.error]="userForm.get('address.street')?.invalid && userForm.get('address.street')?.touched" />
+            <span class="error-message" *ngIf="userForm.get('address.street')?.invalid && userForm.get('address.street')?.touched">
+              Street is required
+            </span>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="number">Number</label>
+            <input
+              id="number"
+              type="number"
+              formControlName="number"
+              class="form-input"
+              [class.error]="userForm.get('address.number')?.invalid && userForm.get('address.number')?.touched" />
+            <span class="error-message" *ngIf="userForm.get('address.number')?.invalid && userForm.get('address.number')?.touched">
+              Number is required
+            </span>
+          </div>
+
+          <div class="form-group">
+            <label for="zipcode">Zipcode</label>
+            <input
+              id="zipcode"
+              type="text"
+              formControlName="zipcode"
+              class="form-input"
+              [class.error]="userForm.get('address.zipcode')?.invalid && userForm.get('address.zipcode')?.touched" />
+            <span class="error-message" *ngIf="userForm.get('address.zipcode')?.invalid && userForm.get('address.zipcode')?.touched">
+              Zipcode is required
+            </span>
+          </div>
+        </div>
+
+        <!-- Geolocation -->
+        <div formGroupName="geolocation">
+          <h3 class="subsection-title">Geolocation</h3>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="lat">Latitude</label>
+              <input
+                id="lat"
+                type="text"
+                formControlName="lat"
+                class="form-input"
+                [class.error]="userForm.get('address.geolocation.lat')?.invalid && userForm.get('address.geolocation.lat')?.touched" />
+              <span class="error-message" *ngIf="userForm.get('address.geolocation.lat')?.invalid && userForm.get('address.geolocation.lat')?.touched">
+                Latitude is required
+              </span>
+            </div>
+
+            <div class="form-group">
+              <label for="long">Longitude</label>
+              <input
+                id="long"
+                type="text"
+                formControlName="long"
+                class="form-input"
+                [class.error]="userForm.get('address.geolocation.long')?.invalid && userForm.get('address.geolocation.long')?.touched" />
+              <span class="error-message" *ngIf="userForm.get('address.geolocation.long')?.invalid && userForm.get('address.geolocation.long')?.touched">
+                Longitude is required
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-actions">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="userForm.invalid">
+          Update User
+        </button>
+      </div>
+    </form>
+
+    <div class="no-data" *ngIf="!(User$ | async)">
+      <p>No user data available.</p>
+    </div>
+  </div>
+</div>
