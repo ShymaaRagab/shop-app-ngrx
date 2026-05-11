@@ -3,7 +3,7 @@ import { updateProfile, updateProfileSuccess , updateProfileFailure } from "./us
 import { initialState } from '../../interfaces/product-state';
 
 
-export const productsReducer = createReducer(
+export const profileReducer = createReducer(
   initialState,
 
   on(updateProfile, state => ({

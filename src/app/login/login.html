@@ -5,7 +5,7 @@
     
     <div class="form-group">
       <label>User Name</label>
-      <input type="text" formControlName="username" value="johnd"/>
+      <input type="text" formControlName="username"/>
 
       <small *ngIf="loginForm.get('username')?.touched && loginForm.get('username')?.invalid">
         <span *ngIf="loginForm.get('username')?.errors?.['required']">Username is required</span>
@@ -15,7 +15,7 @@
 
     <div class="form-group">
       <label>Password</label>
-      <input type="password" formControlName="password" value="m38rmF$"/>
+      <input type="password" formControlName="password"/>
 
       <small *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
         <span *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</span>
